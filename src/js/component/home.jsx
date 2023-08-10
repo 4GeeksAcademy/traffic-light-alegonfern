@@ -1,25 +1,29 @@
-import React from "react";
-
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+/*import React from "react";*/
+import React, { useState } from "react";
+import Circulo from "./circulo";
+import Deck from "./contenedor";
 
 //create your first component
 const Home = () => {
+	const [selectedCircle, setClickCirculo]= useState(0);
+
+	function clickCirculo(number) {
+		setClickCirculo(number);	
+	}
+	
+	
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
+		<>
+			<Deck>
+				<Circulo color="red" selected={selectedCircle==1} onClick = {() => selectedCircle==1?clickCirculo(0):clickCirculo(1)} />
+				<Circulo color="yellow" selected={selectedCircle==2} onClick = {() => selectedCircle==2?clickCirculo(0):clickCirculo(2)}/>
+				<Circulo color="green" selected={selectedCircle==3} onClick = {() => selectedCircle==3?clickCirculo(0):clickCirculo(3)}/>
+				
+			</Deck>
+			<div className="d-flex justify-content-center">
+		
+			</div>
+		</>
 	);
 };
 
